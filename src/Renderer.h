@@ -2,6 +2,7 @@
 
 #include <iostream>
 
+#define GLM_ENABLE_EXPERIMENTAL
 #define GLEW_STATIC
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>

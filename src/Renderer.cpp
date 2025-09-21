@@ -33,16 +33,24 @@ void Renderer::nanogui_init(GLFWwindow* window) {
 		m_camera->reset();
 	});
 
-	//////////
-	// Task 4: Create user-interaction controls here
-	// Allow users to interactively rotate the bunny around 
-	// the global y-axis of world coordinate system (WCS) 
-	// and rotate around its own x-axis of local coordinate system (LCS).
+	//User-interface for bunny rotation along x-axis of LCS and y-axis of WCS
+	gui_1->addGroup("Camera Rotation");
+	static float angle_x = 0.0f;
+	static float angle_y = 0.0f;
+	gui_1->addVariable("Rotate angle a", angle_x)->setSpinnable(true);
+	gui_1->addVariable("Rotate angle b", angle_y)->setSpinnable(true);
+	gui_1->addButton("Rotate Local X", [&]() {
+		m_animation->rotate_x(angle_x);
+	});
+	gui_1->addButton("Rotate Global Y", [&]() {
+		m_animation->rotate_y(angle_y);
+	});
 
+	//Reset Bunny button
+	gui_1->addButton("Reset Bunny", [&]() {
+		m_animation->reset();
+	});
 
-	//////////
-	// Task 5: Reset
-	// Have a “Reset” button that can reset the bunny to the initial state
 
 	m_nanogui_screen->setVisible(true);
 	m_nanogui_screen->performLayout();

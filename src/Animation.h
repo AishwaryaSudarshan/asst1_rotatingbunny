@@ -18,6 +18,10 @@ public:
 
 	//////////
 	// Task 3: define rotation variables/functions here
+	float a_angle;
+	float b_angle;
+	void rotate_x(float angle);
+	void rotate_y(float angle);
 
 private:
 	glm::mat4 m_model_mat;
